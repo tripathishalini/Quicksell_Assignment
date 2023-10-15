@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Set the initial background color (night) */
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; Hide overflow to prevent horizontal scrolling */
+    position: relative; /* Create a positioning context for absolute elements */
+    animation: dayNight 15s infinite alternate; /* Apply animation */
+}
+
+.desert-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: dayNight 15s linear infinite;
+    z-index: -1; /* Place it behind other elements */
+    background: url('/desert.jfif') center/cover no-repeat; /* Use your desert image from the public folder */
+}
+
+.sun {
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    background: url('/sun.png') center/contain no-repeat; /* Use your sun image from the public folder */
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    animation: sunAnimation 7.5s linear infinite alternate;
+    z-index: 1; /* Place it in front of the desert background */
+}
+
+.moon {
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    background: url('/moon.png') center/contain no-repeat; /* Use your moon image from the public folder */
+    position: absolute;
+    top: 20%;
+    left: 100%;
+    animation: moonAnimation 7.5s linear infinite alternate;
+    z-index: 1; /* Place it in front of the desert background */
+}
+
+@keyframes dayNight {
+    0%, 100% {
+        background: url('/desert-night.jfif') center/cover no-repeat; /* Night background */
+        /* background-size: 100% 90%; Stretch to cover the entire screen */
+    }
+    50% {
+        background: url('/desert-day.jfif') center/cover no-repeat; /* Day background */
+        /* background-size: 100% 90%; Stretch to cover the entire screen */
+    }
+}
+
+
+
+@keyframes sunAnimation {
+    0% {
+        transform: translate(-10%, -50%);
+    }
+    100% {
+        transform: translate(110%, -50%);
+    }
+}
+
+@keyframes moonAnimation {
+    0% {
+        transform: translate(110%, -50%);
+    }
+    100% {
+        transform: translate(-10%, -50%);
+    }
+}
+
+
+.kanban-board {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    
+}
+
+.column {
+    width: 200px;
+    background-color: #9ad2f7;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 10px;
+    min-height: 300px;
+}
+
+.column-header {
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.task {
+    background-color: #f09393;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
